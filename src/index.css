@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fonebooth-black: #000000;
+  --color-deep-space: #0a0a0a;
+  --color-titanium: #B8A99A;
+  --color-bright-titanium: #E8DDD5;
+  --color-fonebooth-gold: #D4AF37;
+  --color-bright-gold: #FFD700;
+  --color-carbon: #1a1a1a;
+  --color-dim-white: rgba(255,255,255,0.4);
+  
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Rajdhani", sans-serif;
+}
+
+@layer base {
+  :root {
+    --fonebooth-black: #000000;
+    --deep-space: #0a0a0a;
+    --titanium: #B8A99A;
+    --bright-titanium: #E8DDD5;
+    --fonebooth-gold: #D4AF37;
+    --bright-gold: #FFD700;
+    --carbon: #1a1a1a;
+    --dim-white: rgba(255,255,255,0.4);
+  }
+
+  body {
+    @apply bg-fonebooth-black text-white font-body m-0 p-0;
+  }
+  
+  ::selection {
+    @apply bg-fonebooth-gold text-fonebooth-black;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-widest uppercase;
+  }
+}
