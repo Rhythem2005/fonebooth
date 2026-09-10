@@ -81,7 +81,7 @@ export default function FoneboothHUD({ scrollProgress }: Props) {
                 Our flagship selection is hand-picked for the discerning user.
               </p>
               <Link 
-                to="/product/flagship" 
+                to="/product/titan-pro" 
                 className="inline-block border-b border-fonebooth-gold text-fonebooth-gold font-body tracking-[0.3em] uppercase text-xs pb-2 hover:text-white hover:border-white transition-all duration-300 pointer-events-auto"
               >
                 View Technical Specs
