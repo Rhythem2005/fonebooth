@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, ArrowLeft, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
+import { Check, ArrowLeft, ShieldCheck, Truck, RefreshCw, ShoppingBag, ArrowRight } from 'lucide-react';
 import { PHONES } from '../data/phones';
+import { useCart } from '../context/CartContext';
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const [added, setAdded] = useState(false);
+  const { addItem } = useCart();
   const phone = PHONES.find(p => p.id === id) || PHONES[0];
 
   const handleAddToCart = () => {
+    addItem(phone);
     setAdded(true);
     setTimeout(() => setAdded(false), 2500);
   };
@@ -17,12 +20,21 @@ export default function ProductDetail() {
   return (
     <div className="pt-32 pb-20 px-8 md:px-16 min-h-screen bg-black">
       <div className="max-w-7xl mx-auto">
-        <Link 
-          to="/shop" 
-          className="inline-flex items-center gap-2 text-fonebooth-gold font-body text-[10px] tracking-[0.4em] uppercase mb-12 hover:text-white transition-colors"
-        >
-          <ArrowLeft size={14} /> Back to Collection
-        </Link>
+        <div className="flex justify-between items-center mb-12">
+          <Link 
+            to="/shop" 
+            className="inline-flex items-center gap-2 text-fonebooth-gold font-body text-[10px] tracking-[0.4em] uppercase hover:text-white transition-colors"
+          >
+            <ArrowLeft size={14} /> Back to Collection
+          </Link>
+
+          <Link 
+            to="/compare" 
+            className="inline-flex items-center gap-2 text-white/50 font-body text-[10px] tracking-[0.3em] uppercase hover:text-fonebooth-gold transition-colors"
+          >
+            Compare With Other Models <ArrowRight size={14} />
+          </Link>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
           <motion.div 
@@ -72,22 +84,32 @@ export default function ProductDetail() {
               ))}
             </div>
 
-            <button 
-              onClick={handleAddToCart}
-              className={`w-full font-body font-bold tracking-[0.3em] uppercase text-xs py-5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
-                added 
-                  ? 'bg-fonebooth-gold text-black' 
-                  : 'bg-white text-black hover:bg-fonebooth-gold'
-              }`}
-            >
-              {added ? (
-                <>
-                  <Check size={16} /> Added to Concierge Bag
-                </>
-              ) : (
-                'Add To Concierge Bag'
-              )}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button 
+                onClick={handleAddToCart}
+                className={`flex-grow font-body font-bold tracking-[0.3em] uppercase text-xs py-5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                  added 
+                    ? 'bg-fonebooth-gold text-black' 
+                    : 'bg-white text-black hover:bg-fonebooth-gold'
+                }`}
+              >
+                {added ? (
+                  <>
+                    <Check size={16} /> Added to Concierge Bag
+                  </>
+                ) : (
+                  'Add To Concierge Bag'
+                )}
+              </button>
+
+              <Link
+                to="/cart"
+                className="border border-white/20 text-white font-body tracking-[0.2em] uppercase text-xs py-5 px-6 hover:border-fonebooth-gold hover:text-fonebooth-gold transition-colors flex items-center justify-center gap-2 text-center"
+              >
+                <ShoppingBag size={15} />
+                <span>View Bag</span>
+              </Link>
+            </div>
 
             <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/5 text-center">
               <div className="flex flex-col items-center gap-1">

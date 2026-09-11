@@ -6,16 +6,19 @@ export default function Footer() {
     <footer className="bg-fonebooth-black pt-20 pb-10 px-8 border-t border-fonebooth-gold/30">
       <div className="max-w-7xl mx-auto">
         
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 md:gap-0">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8 lg:gap-0">
           <Link to="/" className="text-white font-display text-4xl tracking-[0.4em] uppercase hover:text-fonebooth-gold transition-colors">
             FONEBOOTH
           </Link>
           
           <div className="flex flex-wrap gap-8 font-body text-dim-white uppercase tracking-[0.2em] text-xs">
-            <Link to="/shop" className="hover:text-fonebooth-gold transition-colors">Shop</Link>
-            <Link to="/contact" className="hover:text-fonebooth-gold transition-colors">Locations</Link>
+            <Link to="/shop" className="hover:text-fonebooth-gold transition-colors">Collection</Link>
+            <Link to="/compare" className="hover:text-fonebooth-gold transition-colors">Compare</Link>
+            <Link to="/trade-in" className="hover:text-fonebooth-gold transition-colors">Trade-In</Link>
+            <Link to="/support" className="hover:text-fonebooth-gold transition-colors">Concierge Desk</Link>
+            <Link to="/contact" className="hover:text-fonebooth-gold transition-colors">Showrooms</Link>
             <Link to="/about" className="hover:text-fonebooth-gold transition-colors">Our Story</Link>
-            <Link to="/support" className="hover:text-fonebooth-gold transition-colors">Concierge</Link>
+            <Link to="/cart" className="hover:text-fonebooth-gold transition-colors">Concierge Bag</Link>
           </div>
           
           <div className="flex gap-6 font-display text-xs">
